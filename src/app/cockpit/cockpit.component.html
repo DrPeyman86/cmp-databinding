@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-xs-12">
+    <p>Add new Servers or blueprints!</p>
+    <label>Server Name</label>
+    <!--you may not need two way binding like [)ngModel]. a local reference may be used just to make the element
+      usable-->
+    <!-- <input type="text" class="form-control" [(ngModel)]="newServerName"> -->
+    <!--the #serverNameInput reference can be added to any html element. It will give access to all of its properties, not just its value-->
+    <!-- #references can be ONLY be used inside the template, not the .ts file. So you will need to manually send the reference to any function
+      that is used inside the .ts file-->
+    <input type="text" 
+    class="form-control" 
+    #serverNameInput>
+    <label>Server Content</label>
+    <!-- <input type="text" class="form-control" [(ngModel)]="newServerContent"> -->
+    <input type="text" 
+    class="form-control" 
+    #serverContentInput>
+    <br>
+    <!--send the serverNameInput reference to the onAddServer function since we removed the two-way binding-->
+    <button
+      class="btn btn-primary"
+      (click)="onAddServer(serverNameInput)">Add Server</button>
+    <button
+      class="btn btn-primary"
+      (click)="onAddBlueprint(serverNameInput)">Add Server Blueprint</button>
+  </div>
+</div>
