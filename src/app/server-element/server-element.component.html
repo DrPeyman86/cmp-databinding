@@ -3,13 +3,13 @@ class="panel panel-default">
 <!-- *ngFor="let element of serverElements"> --><!--make this component a single element component. so each component will have a single server
   not a list where *ngFor is being used-->
   <!-- <div class="panel-heading">{{ element.name }}</div> -->
-  <div class="panel-heading">{{ name }}</div>
+  <div class="panel-heading" #header>{{ name }}</div>
   <div class="panel-body">
     <!-- <p>
       <strong *ngIf="element.type === 'server'">{{ element.content }}</strong>
       <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
     </p> -->
-    <!--ng-content is a directive. If you want to have the above code for example written inside this component's selectors in parent 
+    <!--ng-content is a directive. If you want to have the above code for example written inside this component's selectors in parent
     company, you can copy the above code to the parent component of wherever this component is being rendered to, and then add ng-content.
   then whatever html you have between the component selector inside parent component will get rendered by ng-content-->
     <ng-content></ng-content>

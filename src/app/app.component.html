@@ -7,22 +7,23 @@
   <app-cockpit (serverCreated)="onServerAdded($event)"
   (bpCreated)="onBluePrintAdded($event)"></app-cockpit>
   <hr>
-  <div class="row"> 
+  <div class="row">
     <div class="col-xs-12">
       <button class="btn btn-primary" (click)="onChangeFirst()">Change first element</button>
 
       <button class="btn btn-danger" (click)="onDestroyFirst()">Destroy first element</button>
       <!--the [srvElement] property binding name comes from server.element.component.ts where it is being exported there by @Input(), so that
-      the app.component can acess it. So you set whatever property object that comes from server-elemnet.component to the name of the 
-     ngFor indexed name. so "let serverElementss of serverElements" >>>  [srvElement]="serverElementss" OR 
+      the app.component can acess it. So you set whatever property object that comes from server-elemnet.component to the name of the
+     ngFor indexed name. so "let serverElementss of serverElements" >>>  [srvElement]="serverElementss" OR
     "let serverElement of serverElements" >>>  [srvElement]="serverElement"  -->
       <app-server-element *ngFor="let serverElement of serverElements" [srvElement]="serverElement" [name]="serverElement.name">
         <!--these elements between the app-server-element selector component are being rendered to server-element.component.html by ng-content-->
-          <p>
+        <!--if you want to access this reference inside the app-server-element component, you would use @ContentChild() decorator inside the child component.-->
+          <p #contentParagraph>
             <strong *ngIf="serverElement.type === 'server'">{{ serverElement.content }}</strong>
             <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
           </p>
-      </app-server-element> 
+      </app-server-element>
     </div>
   </div>
-</div> 
+</div>
